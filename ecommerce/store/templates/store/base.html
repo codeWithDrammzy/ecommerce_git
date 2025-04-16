@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html class="bg-slate-100">
+<head>
+    <title>Ecom</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+	<script src="{% static 'js/tailwind.config.js' %}"></script>
+</head>
+<body class="bg-slate-100">
+
+	<nav class="bg-ecom-dark text-white py-3 md:py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <a class="navbar-brand text-lg md:text-xl font-semibold mr-4" href="{% url 'store' %}">Ecom</a>
+                <ul class="navbar-nav md:flex md:space-x-4">
+                    <li class="nav-item active">
+                        <a class="nav-link hover:text-gray-300" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="my-2 my-lg-0 flex items-center space-x-4">
+                <a href="" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded focus:outline-none">Login</a>
+                <a href="{% url 'cart' %}" class="relative">
+                    <img id="cart-id" src="{% static 'images/cart.png' %}" alt="cart" class="w-10 h-auto">
+                    <p   class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</p>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto py-6">
+        <br>
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+
+</body>
+</html>
+

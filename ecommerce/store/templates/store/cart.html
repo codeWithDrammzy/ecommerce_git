@@ -1,3 +1,64 @@
-<h3>cart
-    
-</h3>
+{% extends 'store/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mx-auto mt-8">
+    <h1 class="text-2xl font-semibold mb-4">Shopping Cart</h1>
+
+    <div class="bg-white rounded-md shadow-md p-6 mb-4 items-center justify-between">
+        <a href="{% url 'store' %}" class="inline-block border border-gray-400 rounded-md py-2 px-4 text-gray-700 hover:bg-gray-100 focus:outline-none mb-4"> ← Continue Shopping
+        </a>
+        <hr>
+        <div class="flex justify-between items-center space-x-4">
+            <div>
+                <p class="text-lg">Items: <span class="font-semibold">3</span></p>
+            </div>
+            <div>
+                <p class="text-lg">Total: <span class="font-semibold">$42</span></p>
+            </div>
+            <a href="{% url 'checkout' %}" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none">
+                Checkout
+            </a>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-md shadow-md p-6 mb-4">
+        <div class="overflow-x-auto">
+            <table class="table-auto w-full">
+               
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-4 py-2 text-left"></th> <th class="px-4 py-2 text-left">Item</th>
+                            <th class="px-4 py-2 text-right">Price</th>
+                            <th class="px-4 py-2 text-center">Quantity</th>
+                            <th class="px-4 py-2 text-right">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b">
+                            <td class="px-4 py-4">
+                                <div class="bg-gray-200 w-20 h-16 rounded-md">
+                                    <img src="{% static 'images/dummp.png' %}" alt="Product 1" class="object-cover w-full h-full">
+                                </div>
+                            </td>
+                            <td class="px-4 py-4">Product 1</td>
+                            <td class="px-4 py-4 text-right">$20</td>
+                            <td class="px-4 py-4 text-center">
+                                <div class="flex items-center justify-center space-x-2">
+                                    <button class="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-sm focus:outline-none">
+                                        <img src="{% static 'images/arrow-up.png' %}" alt="Increase Quantity" class="w-4 h-4">
+                                    </button>
+                                    <span>2</span>
+                                    <button class="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-sm focus:outline-none">
+                                        <img src="{% static 'images/arrow-down.png' %}" alt="Decrease Quantity" class="w-4 h-4">
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="px-4 py-4 text-right">$32</td>
+                        </tr> 
+                    </tbody>
+                    
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,1 +1,78 @@
-<h3>check out </h3>
+{% extends 'store/base.html' %}
+ {% load static %}
+{% block content %}
+<div class="container mx-auto ">
+  
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+            <!-- left div -->
+        <div class="bg-white rounded-md shadow-md p-6">
+            <h2 class="text-xl font-semibold mb-4">Shipping Information</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                    <input type="text" id="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Name..">
+                </div>
+                <div>
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                    <input type="email" id="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Email..">
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Shipping Information:</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="address" class="block text-gray-700 text-sm font-bold mb-2">Address</label>
+                        <input type="text" id="address" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Address..">
+                    </div>
+                    <div>
+                        <label for="city" class="block text-gray-700 text-sm font-bold mb-2">City</label>
+                        <input type="text" id="city" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="City..">
+                    </div>
+                    <div>
+                        <label for="state" class="block text-gray-700 text-sm font-bold mb-2">State</label>
+                        <input type="text" id="state" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="State..">
+                    </div>
+                    <div>
+                        <label for="zip" class="block text-gray-700 text-sm font-bold mb-2">Zip code</label>
+                        <input type="text" id="zip" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Zip code..">
+                    </div>
+                </div>
+            </div>
+
+            <button class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-md w-full focus:outline-none focus:shadow-outline">
+                Continue
+            </button>
+        </div>
+        <!-- right div -->
+        <div class="bg-white rounded-md shadow-md p-6">
+            <div class="mb-4">
+                <a href="{% url 'cart' %}" class="inline-block border border-gray-400 rounded-md py-2 px-4 text-gray-700 hover:bg-gray-100 focus:outline-none">
+                    ← Back to Cart
+                </a>
+            </div>
+            <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
+            <hr>
+            <ul class="divide-y divide-gray-200">
+                <li class="py-3 flex items-center">
+                    <div class="bg-gray-200 w-16 h-12 rounded-md mr-4">
+                        <img src="{% static 'images/dummp.png' %}" alt="Product 1" class="object-cover w-full h-full">
+                    </div>
+                    <span>Product 1</span>
+                    <span class="ml-auto font-semibold">$20.00</span>
+                    <span class="ml-2 text-gray-600">x2</span>
+                </li>
+            </ul>
+            <hr>
+            <div class="mt-4">
+                <p>Items: <span class="font-semibold">2</span></p>
+                <p>Total: <span class="font-semibold">$40.00</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

@@ -1,7 +1,14 @@
 from django.shortcuts import render,redirect
+from .models import  *
+
 
 def store(request):
-    return render(request, 'store/store.html')
+    product=Product.objects.all()
+    context ={
+        'product':product
+    }
+
+    return render(request, 'store/store.html', context)
 
 
 def checkout(request):

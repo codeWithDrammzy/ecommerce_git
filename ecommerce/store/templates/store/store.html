@@ -4,53 +4,29 @@
 
 {% block content %}
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {% for product in product%}
     <div class="bg-white rounded-md shadow-md">
-        <div class="bg-gray-200 aspect-w-16 aspect-h-9 rounded-t-md overflow-hidden">
-            <img src="{% static 'images/dummp.png' %}" alt="Product Image" class="object-cover">
-        </div>
+        <div class="bg-gray-200 aspect-w-16 rounded-t-md overflow-hidden h-48">
+             {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="object-cover w-full h-full"> 
+            {% else %}
+            <div class="flex items-center justify-center w-full h-full">
+                <img src="{% static 'images/dummp.png' %}" alt="Default Product Image" class="object-contain w-full h-full"> </div>
+            {% endif %}
+    </div>
         <div class="p-4">
-            <h3 class="text-lg font-semibold text-gray-800">Product Name</h3>
+            <h3 class="text-lg font-semibold text-gray-800">{{product.name|upper}}</h3>
             <div class="flex justify-between items-center mt-2">
                 <div class="flex space-x-2">
                     <button class="bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded-md text-sm focus:outline-none">Add to Cart</button>
                     <a href="#" class="bg-white hover:bg-gray-100 text-green-500 border border-green-500 py-2 px-3 rounded-md text-sm focus:outline-none">View</a>
                 </div>
-                <p class="text-xl font-bold text-gray-900">$20</p>
+                <p class="text-xl font-bold text-gray-900">${{product.price|floatformat:2}} </p>
             </div>
         </div>
     </div>
 
-    <div class="bg-white rounded-md shadow-md">
-        <div class="bg-gray-200 aspect-w-16 aspect-h-9 rounded-t-md overflow-hidden">
-            <img src="{% static 'images/dummp.png' %}" alt="Product Image" class="object-cover">
-        </div>
-        <div class="p-4">
-            <h3 class="text-lg font-semibold text-gray-800">Another Product</h3>
-            <div class="flex justify-between items-center mt-2">
-                <div class="flex space-x-2">
-                    <button class="bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded-md text-sm focus:outline-none">Add to Cart</button>
-                    <a href="#" class="bg-white hover:bg-gray-100 text-green-500 border border-green-500 py-2 px-3 rounded-md text-sm focus:outline-none">View</a>
-                </div>
-                <p class="text-xl font-bold text-gray-900">$15</p>
-            </div>
-        </div>
-    </div>
 
-    <div class="bg-white rounded-md shadow-md">
-        <div class="bg-gray-200 aspect-w-16 aspect-h-9 rounded-t-md overflow-hidden">
-            <img src="{% static 'images/dummp.png' %}" alt="Product Image" class="object-cover">
-        </div>
-        <div class="p-4">
-            <h3 class="text-lg font-semibold text-gray-800">Yet Another Item</h3>
-            <div class="flex justify-between items-center mt-2">
-                <div class="flex space-x-2">
-                    <button class="bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded-md text-sm focus:outline-none">Add to Cart</button>
-                    <a href="#" class="bg-white hover:bg-gray-100 text-green-500 border border-green-500 py-2 px-3 rounded-md text-sm focus:outline-none">View</a>
-                </div>
-                <p class="text-xl font-bold text-gray-900">$10</p>
-            </div>
-        </div>
-    </div>
-
-    </div>
+    {% endfor %}
+</div>
  {% endblock content %}

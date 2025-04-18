@@ -1,6 +1,5 @@
-
-
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -105,15 +104,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-import os
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 STATIC_URL = '/static/'  # Make sure it starts with a slash
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    BASE_DIR / 'static',  # Use Path object for consistency
 ]
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # Use Path object for consistency
+
+# Media files (User-uploaded files like images)
+
+
+MEDIA_URL = '/images/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 

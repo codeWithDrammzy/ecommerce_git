@@ -8,44 +8,52 @@
         
             <!-- left div -->
         <div class="bg-white rounded-md shadow-md p-6">
-            <h2 class="text-xl font-semibold mb-4">Shipping Information</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                <div>
-                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
-                    <input type="text" id="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Name..">
-                </div>
-                <div>
-                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                    <input type="email" id="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Email..">
-                </div>
-            </div>
-
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2">Shipping Information:</label>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <form action="#" method="POST">
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <div>
-                        <label for="address" class="block text-gray-700 text-sm font-bold mb-2">Address</label>
-                        <input type="text" id="address" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Address..">
+                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Name..">
                     </div>
                     <div>
-                        <label for="city" class="block text-gray-700 text-sm font-bold mb-2">City</label>
-                        <input type="text" id="city" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="City..">
-                    </div>
-                    <div>
-                        <label for="state" class="block text-gray-700 text-sm font-bold mb-2">State</label>
-                        <input type="text" id="state" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="State..">
-                    </div>
-                    <div>
-                        <label for="zip" class="block text-gray-700 text-sm font-bold mb-2">Zip code</label>
-                        <input type="text" id="zip" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Zip code..">
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Email..">
                     </div>
                 </div>
-            </div>
-
-            <button class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-md w-full focus:outline-none focus:shadow-outline">
-                Continue
-            </button>
+        
+                <div class="mb-4">
+                    <h2 class="text-xl font-semibold text-center mb-4">Shipping Information</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="address" class="block text-gray-700 text-sm font-bold mb-2">Address</label>
+                            <input type="text" id="address" name="address" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Address..">
+                        </div>
+                        <div>
+                            <label for="city" class="block text-gray-700 text-sm font-bold mb-2">City</label>
+                            <input type="text" id="city" name="city" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="City..">
+                        </div>
+                        <div>
+                            <label for="state" class="block text-gray-700 text-sm font-bold mb-2">State</label>
+                            <input type="text" id="state" name="state" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="State..">
+                        </div>
+                        <div>
+                            <label for="zip" class="block text-gray-700 text-sm font-bold mb-2">Phone</label>
+                            <input type="text" id="zip" name="zip" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Zip code..">
+                        </div>
+                    </div>
+                </div>
+        
+                <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-md w-full focus:outline-none focus:shadow-outline">
+                    Continue
+                </button>
+            </form>
+            <br>
+			<div class=" hidden" id="payment-info">
+				<small>Paypal Options</small>
+			</div>
         </div>
+
+        
         <!-- right div -->
         <div class="bg-white rounded-md shadow-md p-6">
             <div class="mb-4">

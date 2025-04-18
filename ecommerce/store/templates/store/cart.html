@@ -3,14 +3,14 @@
 {% block content %}
 <div class="container mx-auto ">
     <h1 class="text-2xl font-semibold mb-4">Shopping Cart</h1>
-
+    
     <div class="bg-white rounded-md shadow-md p-6 mb-4 items-center justify-between">
         <a href="{% url 'store' %}" class="inline-block border border-gray-400 rounded-md py-2 px-4 text-gray-700 hover:bg-gray-100 focus:outline-none mb-4"> ← Continue Shopping
         </a>
         <hr>
         <div class="flex justify-between items-center space-x-4">
             <div>
-                <p class="text-lg">Items: <span class="font-semibold">3</span></p>
+                <p class="text-lg">Items: <span class="font-semibold">{{order_items}}</span></p>
             </div>
             <div>
                 <p class="text-lg">Total: <span class="font-semibold">$42</span></p>
@@ -34,14 +34,15 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for item in items %}
                         <tr class="border-b">
                             <td class="px-4 py-4">
                                 <div class="bg-gray-200 w-20 h-16 rounded-md">
-                                    <img src="{% static 'images/dummp.png' %}" alt="Product 1" class="object-cover w-full h-full">
+                                    <img src="{{item.product.image.url}}" alt="{{item.product.name|lower}}" class="object-cover w-full h-full">
                                 </div>
                             </td>
-                            <td class="px-4 py-4">Product 1</td>
-                            <td class="px-4 py-4 text-right">$20</td>
+                            <td class="px-4 py-4"> {{item.product.name|upper}} </td>
+                            <td class="px-4 py-4 text-right"> {{item.product.price}} </td>
                             <td class="px-4 py-4 text-center">
                                 <div class="flex items-center justify-center space-x-2">
                                     <button class="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-sm focus:outline-none">
@@ -55,6 +56,7 @@
                             </td>
                             <td class="px-4 py-4 text-right">$32</td>
                         </tr> 
+                        {% endfor %}
                     </tbody>
                     
                 </table>

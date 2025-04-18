@@ -25,7 +25,7 @@
                 <a href="" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded focus:outline-none">Login</a>
                 <a href="{% url 'cart' %}" class="relative">
                     <img id="cart-id" src="{% static 'images/cart.png' %}" alt="cart" class="w-10 h-auto">
-                    <p   class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</p>
+                    <p   class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">{{order_items}}</p>
                 </a>
             </div>
         </div>

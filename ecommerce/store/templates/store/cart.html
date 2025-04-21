@@ -10,10 +10,10 @@
         <hr>
         <div class="flex justify-between items-center space-x-4">
             <div>
-                <p class="text-lg">Items: <span class="font-semibold">{{order_items}}</span></p>
+                <p class="text-lg">Items: <span class="font-semibold">{{order.get_cart_items}}</span></p>
             </div>
             <div>
-                <p class="text-lg">Total: <span class="font-semibold">$42</span></p>
+                <p class="text-lg">Total: <span class="font-semibold">${{order.get_cart_total|floatformat:2}}</span></p>
             </div>
             <a href="{% url 'checkout' %}" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none">
                 Checkout
@@ -42,25 +42,29 @@
                                 </div>
                             </td>
                             <td class="px-4 py-4"> {{item.product.name|upper}} </td>
-                            <td class="px-4 py-4 text-right"> {{item.product.price}} </td>
+                            <td class="px-4 py-4 text-right"> ${{item.product.price|floatformat:2}} </td>
                             <td class="px-4 py-4 text-center">
                                 <div class="flex items-center justify-center space-x-2">
                                     <button class="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-sm focus:outline-none">
                                         <img src="{% static 'images/arrow-up.png' %}" alt="Increase Quantity" class="w-4 h-4">
                                     </button>
-                                    <span>2</span>
+                                    <span>{{item.quantity}}</span>
                                     <button class="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-sm focus:outline-none">
                                         <img src="{% static 'images/arrow-down.png' %}" alt="Decrease Quantity" class="w-4 h-4">
                                     </button>
                                 </div>
                             </td>
-                            <td class="px-4 py-4 text-right">$32</td>
+                            <td class="px-4 py-4 text-right"> ${{item.get_total|floatformat:2}} </td>
                         </tr> 
                         {% endfor %}
-                    </tbody>
+                     </tbody>
                     
                 </table>
             </div>
         </div>
+
+        
+
+
     </div>
 {% endblock content %}

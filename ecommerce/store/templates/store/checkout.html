@@ -64,19 +64,25 @@
             <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
             <hr>
             <ul class="divide-y divide-gray-200">
+                {% for item in items %}
                 <li class="py-3 flex items-center">
                     <div class="bg-gray-200 w-16 h-12 rounded-md mr-4">
-                        <img src="{% static 'images/dummp.png' %}" alt="Product 1" class="object-cover w-full h-full">
+                        {% if item.product.image %}
+                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="object-cover w-full h-full">
+                        {% endif %}
                     </div>
-                    <span>Product 1</span>
-                    <span class="ml-auto font-semibold">$20.00</span>
-                    <span class="ml-2 text-gray-600">x2</span>
+                    <span>{{ item.product.name }}</span>
+                    <span class="ml-auto font-semibold">${{ item.product.price|floatformat:2 }}</span>
+                    <span class="ml-2 text-gray-600">x{{ item.quantity }}</span>
                 </li>
+                {% empty %}
+                <li class="py-3 text-gray-600">Your cart is empty.</li>
+                {% endfor %}
             </ul>
             <hr>
             <div class="mt-4">
-                <p>Items: <span class="font-semibold">2</span></p>
-                <p>Total: <span class="font-semibold">$40.00</span></p>
+                <p>Items: <span class="font-semibold">{{ order.get_cart_items}}</span></p>
+                <p>Total: <span class="font-semibold">${{ order.get_cart_total|floatformat:2 }}</span></p>
             </div>
         </div>
     </div>

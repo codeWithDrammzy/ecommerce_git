@@ -46,11 +46,11 @@
                             <td class="px-4 py-4 text-center">
                                 <div class="flex items-center justify-center space-x-2">
                                     <button class="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-sm focus:outline-none">
-                                        <img src="{% static 'images/arrow-up.png' %}" alt="Increase Quantity" class="w-4 h-4">
+                                        <img  data-product="{{item.product.id}}" src="{% static 'images/arrow-up.png' %}"  data-action="add"  alt="Increase Quantity" class="w-4 h-4  update-cart">
                                     </button>
                                     <span>{{item.quantity}}</span>
                                     <button class="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-sm focus:outline-none">
-                                        <img src="{% static 'images/arrow-down.png' %}" alt="Decrease Quantity" class="w-4 h-4">
+                                        <img data-product="{{item.product.id}}" data-action="remove"  src="{% static 'images/arrow-down.png' %}" alt="Decrease Quantity" class="w-4 h-4  update-cart">
                                     </button>
                                 </div>
                             </td>

@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import JsonResponse   
 import json 
 from .models import  *
+import datetime
 
 
 def store(request):
@@ -13,7 +14,7 @@ def store(request):
         cartItem = order.get_cart_items
     else:
         items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping':False}
         cartItem = order['get_cart_items']
 
     product=Product.objects.all()
@@ -38,7 +39,7 @@ def checkout(request):
         cartItem = order.get_cart_items
     else:
         items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping':False}
         cartItem = order['get_cart_items']
 
     context = {
@@ -58,7 +59,7 @@ def cart(request):
         cartItem = order.get_cart_items
     else:
         items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping':False }
         cartItem = order['get_cart_items']
     context = {
         'items': items,
@@ -92,3 +93,39 @@ def updateItem(request):
 
     return JsonResponse('Item updated successfully', safe=False)
 # Create your views here.
+
+
+
+def processOrder(request):
+    transaction_id = datetime.datetime.now().timestamp()
+    data = json.loads(request.body)
+
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+
+        total = float(data['form']['total'])
+        order.transaction_id = transaction_id
+
+        if total == float(order.get_cart_total):
+            order.complete = True
+        order.save()
+
+        if order.shipping ==True:
+            ShippingAddress.objects.create(
+                customer= customer,
+                order = order,
+                address = data['shipping']['address'],
+                city = data['shipping']['city'],
+                state = data ['shipping']['state'],
+                phone = data['shipping']['phone'],
+
+
+
+            )
+    else:
+        print('User is not logged in')
+
+    return JsonResponse('Payment submitted..', safe=False)
+
+    
